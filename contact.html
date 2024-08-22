@@ -16,35 +16,35 @@
         <h1>Contact Michael C. Scott</h1>
         <p>
             10 Sanford Dr, Athens, GA 30605
-            &#x2022; +1 (678) 630-0302
-            &#x2022; mcs19358@uga.edu
+            &nbsp; &#x2022; &nbsp; +1 (678) 630-0302
+            &nbsp; &#x2022; &nbsp; mcs19358@uga.edu
         </p>
     </section>
 
     <hr/>
 
-    <form action="mailto:mcs19358@uga.edu" method="post" id="emailform">
+    <form action="mailto:mcs19358@uga.edu" target="_blank" method="post" id="emailform" enctype="multipart/form-data">
         <!-- A table is uses here because having the labels misaligned was driving me mad. -->
         <table>
             <tr>
                 <td><label for="name">Name:</label></td>
-                <td><input type="text" id="name"/></td>
+                <td><input type="text" id="name" size="35"/></td>
             </tr>
             <tr>
                 <td><label for="email">Email:</label></td>
-                <td><input type="email" id="email"/></td>
+                <td><input type="email" id="email" size="35"/></td>
             </tr>
             <tr>
                 <td><label for="message">Message:</label></td>
-                <td><textarea id="message"></textarea></td>
+                <td><textarea id="message" name="comment" rows="6" cols="34"></textarea></td>
             </tr>
         </table>
     </form>
-    <!-- Opens mail client, but doesn't fill in message (or take into account anything except the mailto: email). -->
+    <!-- Opens mail client, but doesn't fill in message properly ("comment=<input text>"). -->
     <input type="submit" form="emailform"/>
 
     <footer>
-        &copy; <a href="index.html">Michael C. Scott</a> &#x2022; <a href="https://www.linkedin.com/in/michael-scott-4730bb250/"><i class="fa-brands fa-linkedin"></i></a>
+        &copy; <a href="index.html">Michael C. Scott</a> &nbsp; &#x2022; &nbsp; <a href="https://www.linkedin.com/in/michael-scott-4730bb250/"><i class="fa-brands fa-linkedin"></i></a>
     </footer>
 </body>
 </html>
