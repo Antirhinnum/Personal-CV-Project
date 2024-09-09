@@ -1,0 +1,260 @@
+/* Palette: https://colorhunt.co/palette/77e4c836c2ce478ccf4535c1 */
+/* General HTML elements */
+* {
+    font-family: "Playwrite DE Grund", cursive;
+    font-optical-sizing: auto;
+    font-size: medium;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: xx-large;
+}
+
+body {
+    margin: 0px;
+}
+
+a {
+    font-size: 100%;
+    text-decoration: none;
+    color: #4535C1;
+    transition: font-size 0.2s;
+}
+
+a:hover {
+    font-size: 105%;
+}
+
+/* From https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr */
+hr {
+    border: none;
+    border-top: 2px black double;
+    color: black;
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+    width: 80%;
+}
+
+hr::after {
+    background: white;
+    content: '%%%';
+    padding: 0px 4px;
+    position: relative;
+    top: -15px;
+}
+
+/* Page layout */
+nav {
+    background-color: #36C2CE;
+    margin: 0px;
+    padding: 0px 10px;
+
+    position: sticky;
+    top: 0px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: #36C2CE 10px solid;
+    z-index: 2;
+}
+
+.splash {
+    top: 0px;
+    padding: 10px;
+    margin: 0px;
+
+    & > h1 {
+        color: #4535C1;
+        text-align: center;
+    }
+
+    & > img {
+        border-radius: 10px;
+        width: 250px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    & > .tagline {
+        font-style: italic;
+    }
+}
+
+.info {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+
+    & * {
+        margin: 4px;
+        text-align: center;
+    }
+}
+
+#main {
+    display: flex;
+
+    & section {
+        & h2 {
+            margin-bottom: 0;
+            color:#36C2CE;
+            font-family: "Arial", sans-serif;
+            font-size: x-large;
+        }
+
+        & ul {
+            list-style-type: square;
+        }
+
+        & dl {
+            display: inline-grid;
+            grid-auto-flow:row;
+            grid-template-columns: 1fr 2fr;
+
+            & * {
+                padding: 6px;
+            }
+            & dd {
+                margin-left: 0;
+                border-left: 2px black solid;
+            }
+
+            & dt, dd {
+                border-top: 2px black solid;
+            }
+            & dt:first-of-type, dd:first-of-type {
+                border-top: 0;
+            }
+            & dt:last-of-type, dd:last-of-type {
+                border-bottom: 0;
+            }
+        }
+    }
+}
+
+#left {
+    background-color: #478CCF;
+}
+
+#right {
+    & h2 {
+        margin-top: 0;
+    }
+}
+
+#courselist {
+    display: flex;
+    flex-flow: row wrap;
+
+    & div:not(:first-child) {
+        background-color: #36C2CE;
+        margin: 2px;
+        padding: 4px 10px;
+    }
+
+    & * {
+        display: inline;
+        padding: 4px 0;
+    }
+}
+
+.three-col {
+    display: flex;
+    justify-content: space-between;
+
+    & > .card {
+        background-color: aquamarine;
+        margin: 4px;
+        border-radius: 4px;
+        border: 2px solid hsl(from aquamarine h calc(s * 0.8) calc(l * 0.8));
+        box-shadow: 3px 2px 2px hsl(from aquamarine h calc(s * 0.5) calc(l * 0.35));
+        width: 33%;
+
+        & > img {
+            margin: 3px auto;
+            display: block;
+            border-radius: 20px;
+            width: 85%;
+        }
+        & > h3 {
+            text-align: center;
+        }
+    }
+}
+
+.one-col  {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+
+    /* Styled hrs don't play nice with whatever flexboxes do under the hood */
+    & > *:not(hr) {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        width: 50%;
+        text-align: center;
+    }
+}
+
+footer {
+    clear: both;
+    background-color: #36C2CE;
+    padding: 6px;
+    border-top: #36C2CE 10px solid;
+    border-top-right-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+@media (width < 1000px) {
+    /* Splash is at the top of the page and moves away when scrolling. */
+    nav {
+        /* Make sure there's no white gap between the corners and the top of the splash */
+        margin-bottom: -10px;
+        border-radius: 0px 0px 10px 10px;
+    }
+    #main {
+        flex-flow: column wrap;
+    }
+    .splash {
+        border-bottom: #478CCF 10px solid;
+        border-radius: 0px 0px 10px 10px;
+    }
+    #right {
+        padding: 10px;
+    }
+    footer {
+        border-top-left-radius: 10px;
+    }
+}
+@media (width >= 1000px) {
+    /* Splash is in a left sidebar and scrolls with the page. */
+    nav {
+        border-bottom-right-radius: 10px;
+    }
+    /* Splash doesn't exist on the contact page, so we need rounded corners on the left side too. */
+    body:not(:has(.splash)) {
+        & nav {
+            border-bottom-left-radius: 10px;
+        }
+        & footer {
+            border-top-left-radius: 10px;
+        }
+    }
+    .splash {
+        float: left;
+        max-width: 300px;
+        position: sticky;
+        top: 100px;
+    }
+    #right {
+        float: right;
+        padding: 10px;
+    }
+}
